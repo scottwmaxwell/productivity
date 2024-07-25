@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Excel to Markdown Converter</title>
+</head>
+<body>
+    <h1>Excel to Markdown Converter</h1>
+    <textarea id="excelInput" rows="10" cols="50" placeholder="Paste Excel-formatted text here..."></textarea>
+    <br>
+    <button onclick="convertToMarkdown()">Convert</button>
+    <h2>Markdown Output</h2>
+    <textarea id="markdownOutput" rows="10" cols="50" readonly></textarea>
+
+    <script>
+        function convertToMarkdown() {
+            const input = document.getElementById('excelInput').value;
+            const rows = input.trim().split('\n');
+            let output = '';
+
+            rows.forEach((row, index) => {
+                const columns = row.split('\t');
+                output += '| ' + columns.join(' | ') + ' |\n';
+
+                // Add the header separator after the first row
+                if (index === 0) {
+                    output += '| ' + columns.map(() => '---').join(' | ') + ' |\n';
+                }
+            });
+
+            document.getElementById('markdownOutput').value = output;
+        }
+    </script>
+</body>
+</html>
