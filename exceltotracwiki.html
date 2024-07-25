@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Excel to Trac WikiFormatting Converter</title>
+</head>
+<body>
+    <h1>Excel to Trac WikiFormatting Converter</h1>
+    <textarea id="excelInput" rows="10" cols="50" placeholder="Paste Excel-formatted text here..."></textarea>
+    <br>
+    <button onclick="convertToTrac()">Convert</button>
+    <h2>Trac WikiFormatting Output</h2>
+    <textarea id="tracOutput" rows="10" cols="50" readonly></textarea>
+
+    <script>
+        function convertToTrac() {
+            const input = document.getElementById('excelInput').value;
+            const rows = input.trim().split('\n');
+            let output = '';
+
+            rows.forEach(row => {
+                const columns = row.split('\t');
+                output += '|| ' + columns.join(' || ') + ' ||\n';
+            });
+
+            document.getElementById('tracOutput').value = output;
+        }
+    </script>
+</body>
+</html>
