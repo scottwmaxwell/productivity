@@ -12,7 +12,12 @@
         <li><a href="#header-2">Header two</a></li>
     </ul>
 
+    <p>Max touch points <span id="max-touch-points"></span></p>
+
     <h2 id="header-2">Header two</h2>
     <p>This section is to test the above anchor tag link</p>
 </body>
+    <script>
+        document.getElementById("max-touch-points").innerText = navigator.maxTouchPoints;
+    </script>
 </html>
